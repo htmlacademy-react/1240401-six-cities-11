@@ -1,4 +1,5 @@
-import Card from '../../components/card/card';
+import Main from '../../pages/main/main';
+
 
 type AppOfferProps = {
   offersCount: number;
@@ -7,7 +8,7 @@ type AppOfferProps = {
 
 function App({offersCount}: AppOfferProps): JSX.Element{
   return (
-    <Card offersCount={offersCount} />
+    <Main offersCount={offersCount}/>
   );
 }
 

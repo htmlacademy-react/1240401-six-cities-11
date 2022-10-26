@@ -1,8 +1,5 @@
-type CardProps = {
-  offersCount: number;
-}
 
-function Card({offersCount}: CardProps):JSX.Element {
+function Card() {
   return (
     <article className="cities__card place-card">
       <div className="place-card__mark">
