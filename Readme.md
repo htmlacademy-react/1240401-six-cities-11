@@ -1,7 +1,7 @@
 # Личный проект «Шесть городов»
 
 * Студент: [Анна Венцель](https://up.htmlacademy.ru/react/11/user/1240401).
-* Наставник: `[Алексей Хабиров](https://htmlacademy.ru/profile/alex_khab)`.
+* Наставник:[Алексей Хабиров](https://htmlacademy.ru/profile/alex_khab).
 
 ---
 

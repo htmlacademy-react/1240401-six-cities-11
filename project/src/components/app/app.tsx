@@ -16,35 +16,32 @@ function App({offersCount}: AppOfferProps): JSX.Element{
   return (
     <BrowserRouter>
       <Routes>
-        <Route>
+        <Route
           path={AppRoute.Main}
           element={<Main offersCount={offersCount} />}
-        </Route>
-        <Route>
+        />
+        <Route
           path={AppRoute.Login}
           element={<Login />}
-        </Route>
-        <Route>
+        />
+        <Route
           path={AppRoute.Favorites}
           element={
-            <PrivateRoute
-              authorizationStatus={AuthorizationStatus.NoAuth}
-            >
+            <PrivateRoute authorizationStatus={AuthorizationStatus.NoAuth}>
               <Favorites />
             </PrivateRoute>
           }
-        </Route>
-        <Route>
+        />
+        <Route
           path={AppRoute.Room}
           element={<Room />}
-        </Route>
-        <Route>
-          path=`*`
+        />
+        <Route
+          path="*"
           element={<UnexistingPage />}
-        </Route>
+        />
       </Routes>
     </BrowserRouter>
   );
 }
-
 export default App;
