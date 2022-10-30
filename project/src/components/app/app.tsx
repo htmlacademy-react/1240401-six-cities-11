@@ -2,7 +2,7 @@ import Main from '../../pages/main/main';
 import Login from '../../pages/login/login';
 import Favorites from '../../pages/favorites/favorites';
 import Room from '../../pages/room/room';
-import UnexistingPage from '../../pages/page404/page404';
+import Page404 from '../../pages/page404/page404';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { AppRoute, AuthorizationStatus } from '../../const';
 import PrivateRoute from '../private-route/private-route';
@@ -38,7 +38,7 @@ function App({offersCount}: AppOfferProps): JSX.Element{
         />
         <Route
           path="*"
-          element={<UnexistingPage />}
+          element={<Page404 />}
         />
       </Routes>
     </BrowserRouter>
