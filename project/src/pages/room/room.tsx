@@ -1,6 +1,4 @@
-
-
-function Room() {
+function Room():JSX.Element {
   return (
     <div className="page">
       <header className="header">
