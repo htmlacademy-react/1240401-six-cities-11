@@ -1,5 +1,11 @@
+import { Offer } from '../../types/offer';
 
-function Card() {
+type CardProps = {
+  offer: Offer;
+  onMouseOver: () => void;
+}
+
+function Card({offer, onMouseOver}:CardProps) {
   return (
     <article className="cities__card place-card">
       <div className="place-card__mark">

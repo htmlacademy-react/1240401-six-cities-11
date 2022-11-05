@@ -8,30 +8,30 @@
   background-size: 100% 100%;
 }
 
-p {
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
+.text {
+  font-family: rubik, Arial, Helvetica, sans-serif;
   font-size: 15pt;
   font-weight: bold;
-  color: rgb(90, 4, 90);
-  margin-left: 40%;
+  color: white;
+  margin-left: 41%;
   margin-bottom: 3%;
 }
 
 .link {
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-family: rubik, Arial, Helvetica, sans-serif;
   font-weight: bold;
   font-size: 18pt;
-  color:rgb(207, 192, 217);
-  border: 2px solid indigo;
-  margin-left: 35%;
+  color: white;
+  /* border: 2px solid rgb(3, 31, 51); */
+  margin-left: 36%;
   display: inline-block;
-  background-color:rgb(49, 7, 63);
+  /* background-color:#4481c3; */
 }
 
-h1 {
-  font-family: 'Times New Roman', Times, serif;
+.title {
+  font-family: rubik, Arial, Helvetica, sans-serif;
   font-size: 250%;
-  color: darkmagenta;
+  color: white;
   margin-left: 40%;
   margin-top: 5%
 };
