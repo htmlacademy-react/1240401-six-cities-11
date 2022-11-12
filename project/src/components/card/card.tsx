@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { MAX_RATING } from '../../const';
-import { Offer } from '../../types/offer';
+import { Offer } from '../../types/offers';
 import Button from '../button/button';
 
 type CardProps = {
@@ -12,6 +12,7 @@ type CardProps = {
 function Card({offer, onMouseOver, onMouseLeave}: CardProps) {
   const { price, rating, type, previewImage, isPremium, title } = offer;
   const ratingCount = (rating * 100) / MAX_RATING;
+  const typeCapitalizeChar = type[0].toUpperCase() + type.substring(1);
 
   return (
     <article className="cities__card place-card" onMouseOver={onMouseOver} onMouseLeave={onMouseLeave}>
@@ -42,7 +43,7 @@ function Card({offer, onMouseOver, onMouseLeave}: CardProps) {
         <h2 className="place-card__name">
           <Link to="/#">{title}</Link>
         </h2>
-        <p className="place-card__type">{type}</p>
+        <p className="place-card__type">{typeCapitalizeChar}</p>
       </div>
     </article>
   );

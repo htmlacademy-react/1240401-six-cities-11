@@ -1,4 +1,4 @@
-function PlacesSorting() {
+function Sorting() {
   return (
     <form className="places__sorting" action="#" method="get">
       <span className="places__sorting-caption">Sort by</span>
@@ -17,4 +17,4 @@ function PlacesSorting() {
     </form>
   );
 }
-export default PlacesSorting;
+export default Sorting;

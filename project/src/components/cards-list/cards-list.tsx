@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Offer } from '../../types/offer';
+import { Offer } from '../../types/offers';
 import Card from '../card/card';
 
 
@@ -8,8 +8,7 @@ type CardsListProps = {
 }
 
 export function CardsList({offers}: CardsListProps):JSX.Element {
-
-  const [, setActiveCard] = useState(0);
+  const [, setActiveCard] = useState<number | null>(null);
 
   return (
     <div className="cities__places-list">
@@ -18,7 +17,7 @@ export function CardsList({offers}: CardsListProps):JSX.Element {
           key={offer.id}
           offer={offer}
           onMouseOver={() => setActiveCard(offer.id)}
-          onMouseLeave={() => setActiveCard(0)}
+          onMouseLeave={() => setActiveCard(null)}
         />
       ))}
     </div>
