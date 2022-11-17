@@ -31,8 +31,8 @@ function App({offersCount, offers}: AppOfferProps): JSX.Element{
           <Route
             path={AppRoute.Favorites}
             element={
-              <PrivateRoute authorizationStatus={AuthorizationStatus.NoAuth}>
-                <Favorites />
+              <PrivateRoute authorizationStatus={AuthorizationStatus.Auth}>
+                <Favorites offers={offers}/>
               </PrivateRoute>
             }
           />

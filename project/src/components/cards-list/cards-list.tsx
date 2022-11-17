@@ -18,6 +18,7 @@ export function CardsList({offers}: CardsListProps):JSX.Element {
           offer={offer}
           onMouseOver={() => setActiveCard(offer.id)}
           onMouseLeave={() => setActiveCard(null)}
+          cardType={'city'}
         />
       ))}
     </div>

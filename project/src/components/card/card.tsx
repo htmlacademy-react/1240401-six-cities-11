@@ -5,28 +5,48 @@ import Button from '../button/button';
 
 type CardProps = {
   offer: Offer;
-  onMouseOver: () => void;
-  onMouseLeave: () => void;
+  onMouseOver?: () => void;
+  onMouseLeave?: () => void;
+  cardType: 'city' | 'favorites';
 }
 
-function Card({offer, onMouseOver, onMouseLeave}: CardProps) {
+const cardsClasses = {
+  city: {
+    article: 'cities__card place-card',
+    image: 'cities__image-wrapper place-card__image-wrapper',
+    cardInfo: 'place-card__info'
+  },
+
+  favorites: {
+    article: 'favorites__card place-card',
+    image: 'favorites__image-wrapper place-card__image-wrapper',
+    cardInfo: 'favorites__card-info place-card__info'
+  }
+};
+
+function Card({ offer, onMouseOver, onMouseLeave, cardType }: CardProps) {
   const { price, rating, type, previewImage, isPremium, title } = offer;
   const ratingCount = (rating * 100) / MAX_RATING;
   const typeCapitalizeChar = type[0].toUpperCase() + type.substring(1);
+  const { article, image, cardInfo } = cardsClasses[cardType];
 
   return (
-    <article className="cities__card place-card" onMouseOver={onMouseOver} onMouseLeave={onMouseLeave}>
+    <article
+      className={article}
+      onMouseOver={() => { if (onMouseOver) { onMouseOver(); } }}
+      onMouseLeave={() => { if (onMouseLeave) { onMouseLeave(); } }}
+    >
       {isPremium && (
         <div className="place-card__mark">
           <span>Premium</span>
         </div>
       )}
-      <div className="cities__image-wrapper place-card__image-wrapper">
+      <div className={image}>
         <Link to="/#">
-          <img className="place-card__image" src={previewImage} width="260" height="200" alt="Place"/>
+          <img className="place-card__image" src={previewImage} width="260" height="200" alt="Place" />
         </Link>
       </div>
-      <div className="place-card__info">
+      <div className={cardInfo}>
         <div className="place-card__price-wrapper">
           <div className="place-card__price">
             <b className="place-card__price-value">&euro;{price}</b>
@@ -36,7 +56,7 @@ function Card({offer, onMouseOver, onMouseLeave}: CardProps) {
         </div>
         <div className="place-card__rating rating">
           <div className="place-card__stars rating__stars">
-            <span style={{width: `${ratingCount}%`}}></span>
+            <span style={{ width: `${ratingCount}%` }}></span>
             <span className="visually-hidden">{rating}</span>
           </div>
         </div>
