@@ -4,7 +4,8 @@ type Location = {
   zoom: number;
 };
 
-type City = {
+export type City = {
+  lat: number;
   name: string;
   location: Location;
 };
@@ -34,3 +35,11 @@ export type Offer = {
   title: string;
   type: string;
 };
+
+export type Point = {
+  title: string;
+  lat: number;
+  lng: number;
+};
+
+export type Points = Point[];

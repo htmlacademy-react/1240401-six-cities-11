@@ -33,8 +33,8 @@ function Card({ offer, onMouseOver, onMouseLeave, cardType }: CardProps) {
   return (
     <article
       className={article}
-      onMouseOver={() => { if (onMouseOver) { onMouseOver(); } }}
-      onMouseLeave={() => { if (onMouseLeave) { onMouseLeave(); } }}
+      onMouseOver={() => onMouseOver?.()}
+      onMouseLeave={() => onMouseLeave?.()}
     >
       {isPremium && (
         <div className="place-card__mark">
