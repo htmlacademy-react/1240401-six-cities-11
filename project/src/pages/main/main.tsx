@@ -1,6 +1,5 @@
 import { Helmet } from 'react-helmet-async';
 import { Offer } from '../../types/offers';
-// import { City, Points, Point } from '../../types/offers';
 import { CardsList } from '../../components/cards-list/cards-list';
 import Cities from '../../components/cities/cities';
 import Sorting from '../../components/sorting/sorting';
@@ -42,9 +41,8 @@ function Main({ offersCount, offers}: MainProps): JSX.Element {
             <div className="cities__right-section">
               <Map
                 className="cities__map"
-                // selectedPoint={Point}
-                // city={City}
-                // points={Points}
+                city={offers[0].city}
+                points={offers}
               />
             </div>
           </div>

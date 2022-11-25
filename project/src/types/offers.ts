@@ -5,10 +5,9 @@ type Location = {
 };
 
 export type City = {
-  lat: number;
-  name: string;
   location: Location;
-};
+  name: string;
+}
 
 type Host = {
   avatarUrl: string;
@@ -35,11 +34,3 @@ export type Offer = {
   title: string;
   type: string;
 };
-
-export type Point = {
-  title: string;
-  lat: number;
-  lng: number;
-};
-
-export type Points = Point[];
