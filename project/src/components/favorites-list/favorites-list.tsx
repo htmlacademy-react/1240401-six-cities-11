@@ -9,8 +9,8 @@ function FavoritesList({ offers }: FavoritesListProps): JSX.Element {
   const cities = Array.from(new Set(offers.map((offer) => offer.city.name)));
 
   return (
-
     <ul className="favorites__list">
+
       {cities.map((city) => (
         <li className="favorites__locations-items" key={city}>
           <div className="favorites__locations locations locations--current">
@@ -21,13 +21,18 @@ function FavoritesList({ offers }: FavoritesListProps): JSX.Element {
             </div>
           </div>
           <div className="favorites__places">
-            {offers.filter((offer) => offer.city.name === city).map((offer) => (
-              <Card
-                key={offer.id}
-                offer={offer}
-                cardType={'favorites'}
-              />
-            ))}
+            {offers.map((offer: Offer) => {
+              if (offer.city.name === city) {
+                return (
+                  <Card
+                    key={offer.id}
+                    offer={offer}
+                    cardType={'favorites'}
+                  />
+                );
+              }
+              return null;
+            })}
           </div>
         </li>
       ))}

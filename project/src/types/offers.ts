@@ -4,10 +4,10 @@ type Location = {
   zoom: number;
 };
 
-type City = {
-  name: string;
+export type City = {
   location: Location;
-};
+  name: string;
+}
 
 type Host = {
   avatarUrl: string;
