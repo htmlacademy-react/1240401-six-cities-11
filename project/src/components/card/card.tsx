@@ -7,7 +7,7 @@ type CardProps = {
   offer: Offer;
   onMouseOver?: () => void;
   onMouseLeave?: () => void;
-  cardType: 'city' | 'favorites';
+  cardType: 'city' | 'favorites' | 'nearplace';
 }
 
 const cardsClasses = {
@@ -21,6 +21,12 @@ const cardsClasses = {
     article: 'favorites__card place-card',
     image: 'favorites__image-wrapper place-card__image-wrapper',
     cardInfo: 'favorites__card-info place-card__info'
+  },
+
+  nearplace: {
+    article: 'near-places__card place-card',
+    image: 'near-places__image-wrapper place-card__image-wrapper',
+    cardInfo: 'place-card__info'
   }
 };
 
