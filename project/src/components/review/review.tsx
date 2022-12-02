@@ -1,5 +1,6 @@
 import { MAX_RATING } from '../../const';
 import { ReviewType } from '../../types/review-type';
+import dayjs from 'dayjs';
 
 
 type ReviewProps = {
@@ -7,7 +8,8 @@ type ReviewProps = {
 }
 
 function Review({ review }: ReviewProps): JSX.Element {
-  const ratingCount = ( review.rating * 100) / MAX_RATING;
+  const ratingCount = (review.rating * 100) / MAX_RATING;
+  const reviewDate = dayjs(review.date).format('MMMM YYYY');
 
   return (
     <li className="reviews__item">
@@ -29,7 +31,7 @@ function Review({ review }: ReviewProps): JSX.Element {
         <p className="reviews__text">
           {review.comment}
         </p>
-        <time className="reviews__time" dateTime="2019-04-24">{review.date}</time>
+        <time className="reviews__time" dateTime={review.date}>{reviewDate}</time>
       </div>
     </li>
   );
