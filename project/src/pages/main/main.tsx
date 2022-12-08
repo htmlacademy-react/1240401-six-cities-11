@@ -5,13 +5,20 @@ import Cities from '../../components/cities/cities';
 import Sorting from '../../components/sorting/sorting';
 import Map from '../../components/map/map';
 import Header from '../../components/header/header';
+import { useAppSelector } from '../../hooks';
 
 type MainProps = {
   offersCount: number;
   offers: Offer[];
 }
 
-function Main({ offersCount, offers}: MainProps): JSX.Element {
+function Main({offersCount, offers}: MainProps): JSX.Element {
+  const city = useAppSelector((state) => state.city);
+  const offersMain = useAppSelector((state) => state.offers);
+
+  const filteredOffers = offersMain.filter((offer) => offer.city.name === city);
+
+
   return (
     <div className="page page--gray page--main">
       <Helmet>
@@ -35,14 +42,14 @@ function Main({ offersCount, offers}: MainProps): JSX.Element {
 
               <Sorting />
 
-              <CardsList offers={offers} />
+              <CardsList offers={filteredOffers} />
             </section>
 
             <div className="cities__right-section">
               <Map
                 className="cities__map"
-                city={offers[0].city}
-                points={offers}
+                city={filteredOffers[0].city}
+                points={filteredOffers}
               />
             </div>
           </div>

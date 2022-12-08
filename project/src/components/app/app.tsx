@@ -7,22 +7,25 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { AppRoute, AuthorizationStatus } from '../../const';
 import PrivateRoute from '../private-route/private-route';
 import { HelmetProvider } from 'react-helmet-async';
-import { Offer } from '../../types/offers';
+import { Offer, City } from '../../types/offers';
+import { ReviewType } from '../../types/review-type';
 
 type AppOfferProps = {
   offersCount: number;
   offers: Offer[];
+  reviews: ReviewType[];
+  city: City;
 }
 
 
-function App({offersCount, offers}: AppOfferProps): JSX.Element{
+function App({offersCount, offers, reviews, city}: AppOfferProps): JSX.Element{
   return (
     <HelmetProvider>
       <BrowserRouter>
         <Routes>
           <Route
             path={AppRoute.Main}
-            element={<Main offersCount={offersCount} offers={offers} />}
+            element={<Main offers={offers}offersCount={offersCount} />}
           />
           <Route
             path={AppRoute.Login}
@@ -38,7 +41,7 @@ function App({offersCount, offers}: AppOfferProps): JSX.Element{
           />
           <Route
             path={AppRoute.Room}
-            element={<Room />}
+            element={<Room reviews={reviews} offers={offers} city={city} />}
           />
           <Route
             path="*"
