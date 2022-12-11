@@ -1,5 +1,4 @@
 import { Helmet } from 'react-helmet-async';
-import { Offer } from '../../types/offers';
 import { CardsList } from '../../components/cards-list/cards-list';
 import Cities from '../../components/cities/cities';
 import Sorting from '../../components/sorting/sorting';
@@ -7,16 +6,11 @@ import Map from '../../components/map/map';
 import Header from '../../components/header/header';
 import { useAppSelector } from '../../hooks';
 
-type MainProps = {
-  offersCount: number;
-  offers: Offer[];
-}
+function Main(): JSX.Element {
+  const currentCity = useAppSelector((state) => state.city);
+  const offers = useAppSelector((state) => state.offers);
 
-function Main({offersCount, offers}: MainProps): JSX.Element {
-  const city = useAppSelector((state) => state.city);
-  const offersMain = useAppSelector((state) => state.offers);
-
-  const filteredOffers = offersMain.filter((offer) => offer.city.name === city);
+  const filteredOffers = offers.filter((offer) => offer.city.name === currentCity);
 
 
   return (
@@ -32,13 +26,13 @@ function Main({offersCount, offers}: MainProps): JSX.Element {
       <main className="page__main page__main--index">
         <h1 className="visually-hidden">Cities</h1>
 
-        <Cities />
+        <Cities currentCity={currentCity}/>
 
         <div className="cities">
           <div className="cities__places-container container">
             <section className="cities__places places">
               <h2 className="visually-hidden">Places</h2>
-              <b className="places__found">{offersCount} places to stay in Amsterdam</b>
+              <b className="places__found">{filteredOffers.length} places to stay in {currentCity}</b>
 
               <Sorting />
 

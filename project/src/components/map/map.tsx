@@ -1,4 +1,4 @@
-import { useRef, useEffect } from 'react';
+import { useRef, useEffect, useInsertionEffect } from 'react';
 import {Icon, Marker} from 'leaflet';
 import useMap from '../../hooks/use-map';
 import {URL_MARKER_CURRENT} from '../../const';
@@ -43,6 +43,10 @@ function Map({ className, city, points, selectedPoint }: MapProps): JSX.Element 
       });
     }
   }, [map, points, selectedPoint]);
+
+  useEffect(() => {
+    map?.setView({lat: city.location.latitude, lng: city.location.longitude});
+  }, [city, map]);
 
   return (
     <section
