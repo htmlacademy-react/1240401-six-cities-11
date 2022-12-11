@@ -1,6 +1,6 @@
-import { useRef, useEffect } from 'react';
+import { useRef, useEffect, useInsertionEffect } from 'react';
 import {Icon, Marker} from 'leaflet';
-import useMap from '../../hooks/use-map/use-map';
+import useMap from '../../hooks/use-map';
 import {URL_MARKER_CURRENT} from '../../const';
 import { City, Offer } from '../../types/offers';
 import 'leaflet/dist/leaflet.css';
@@ -43,6 +43,10 @@ function Map({ className, city, points, selectedPoint }: MapProps): JSX.Element 
       });
     }
   }, [map, points, selectedPoint]);
+
+  useEffect(() => {
+    map?.setView({lat: city.location.latitude, lng: city.location.longitude});
+  }, [city, map]);
 
   return (
     <section
