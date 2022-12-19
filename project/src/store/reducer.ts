@@ -1,24 +1,30 @@
 import { createReducer } from '@reduxjs/toolkit';
-import { CITIES } from '../const';
+// import { store } from '.';
+import { CITIES, sortingTypes } from '../const';
 import { offers } from '../mocks/offers';
 import { Offer } from '../types/offers';
-import { changeCity } from './action';
+import { changeCity, changeSortName } from './action';
 
 
 type InitialState = {
   city: string;
   offers: Offer[];
+  sortName: string;
 }
 
 const initialState: InitialState = {
   city: CITIES[0],
   offers: offers,
+  sortName: sortingTypes.popular
 };
 
 const reducer = createReducer(initialState, (builder) => {
   builder
     .addCase(changeCity, (state, action) => {
       state.city = action.payload;
+    })
+    .addCase(changeSortName, (state, action) => {
+      state.sortName = action.payload;
     });
 });
 

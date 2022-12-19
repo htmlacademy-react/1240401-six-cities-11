@@ -1,4 +1,4 @@
-import { useRef, useEffect, useInsertionEffect } from 'react';
+import { useRef, useEffect } from 'react';
 import {Icon, Marker} from 'leaflet';
 import useMap from '../../hooks/use-map';
 import {URL_MARKER_CURRENT} from '../../const';

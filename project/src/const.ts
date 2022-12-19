@@ -22,3 +22,12 @@ export const URL_MARKER_CURRENT =
 
 
 export const CITIES = ['Paris', 'Cologne', 'Brussels', 'Amsterdam', 'Hamburg', 'Dusseldorf'];
+
+export const sortingTypes = {
+  popular: 'Popular',
+  lowToHigh: 'Price: low to high',
+  highToLow: 'Price: high to low',
+  topRated: 'Top rated first'
+} as const;
+
+
