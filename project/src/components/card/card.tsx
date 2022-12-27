@@ -5,7 +5,7 @@ import Button from '../button/button';
 
 type CardProps = {
   offer: Offer;
-  onMouseOver?: () => void;
+  onMouseEnter?: () => void;
   onMouseLeave?: () => void;
   cardType: 'city' | 'favorites' | 'nearplace';
 }
@@ -30,7 +30,7 @@ const cardsClasses = {
   }
 };
 
-function Card({ offer, onMouseOver, onMouseLeave, cardType }: CardProps) {
+function Card({ offer, onMouseEnter, onMouseLeave, cardType }: CardProps) {
   const { price, rating, type, previewImage, isPremium, title } = offer;
   const ratingCount = (rating * 100) / MAX_RATING;
   const typeCapitalizeChar = type[0].toUpperCase() + type.substring(1);
@@ -39,7 +39,7 @@ function Card({ offer, onMouseOver, onMouseLeave, cardType }: CardProps) {
   return (
     <article
       className={article}
-      onMouseOver={() => onMouseOver?.()}
+      onMouseEnter={() => onMouseEnter?.()}
       onMouseLeave={() => onMouseLeave?.()}
     >
       {isPremium && (

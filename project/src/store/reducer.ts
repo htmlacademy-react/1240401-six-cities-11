@@ -1,6 +1,6 @@
 import { createReducer } from '@reduxjs/toolkit';
 // import { store } from '.';
-import { CITIES, sortingTypes } from '../const';
+import { CITIES, SortingTypes } from '../const';
 import { offers } from '../mocks/offers';
 import { Offer } from '../types/offers';
 import { changeCity, changeSortName } from './action';
@@ -15,7 +15,7 @@ type InitialState = {
 const initialState: InitialState = {
   city: CITIES[0],
   offers: offers,
-  sortName: sortingTypes.popular
+  sortName: SortingTypes.popular
 };
 
 const reducer = createReducer(initialState, (builder) => {

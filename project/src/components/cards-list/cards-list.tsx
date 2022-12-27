@@ -5,9 +5,10 @@ import Card from '../card/card';
 
 type CardsListProps = {
   offers: Offer[];
+  onMouseEnter?: (activeCard: number | null) => void;
 }
 
-export function CardsList({offers}: CardsListProps):JSX.Element {
+export function CardsList({offers, onMouseEnter}: CardsListProps):JSX.Element {
   const [, setActiveCard] = useState<number | null>(null);
 
   return (
@@ -16,7 +17,7 @@ export function CardsList({offers}: CardsListProps):JSX.Element {
         <Card
           key={offer.id}
           offer={offer}
-          onMouseOver={() => setActiveCard(offer.id)}
+          onMouseEnter={() => setActiveCard(offer.id)}
           onMouseLeave={() => setActiveCard(null)}
           cardType={'city'}
         />

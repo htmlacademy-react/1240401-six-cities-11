@@ -5,13 +5,17 @@ import Sorting from '../../components/sorting/sorting';
 import Map from '../../components/map/map';
 import Header from '../../components/header/header';
 import { useAppSelector } from '../../hooks';
+import { getSortedType } from '../../utils';
+import { useState } from 'react';
 
 function Main(): JSX.Element {
   const currentCity = useAppSelector((state) => state.city);
   const offers = useAppSelector((state) => state.offers);
+  const sortName = useAppSelector((state) => state.sortName);
 
   const filteredOffers = offers.filter((offer) => offer.city.name === currentCity);
 
+  const [activeOffer, setActiveOffer] = useState<number | null>(null);
 
   return (
     <div className="page page--gray page--main">
@@ -26,7 +30,7 @@ function Main(): JSX.Element {
       <main className="page__main page__main--index">
         <h1 className="visually-hidden">Cities</h1>
 
-        <Cities currentCity={currentCity}/>
+        <Cities currentCity={currentCity} />
 
         <div className="cities">
           <div className="cities__places-container container">
@@ -34,9 +38,12 @@ function Main(): JSX.Element {
               <h2 className="visually-hidden">Places</h2>
               <b className="places__found">{filteredOffers.length} places to stay in {currentCity}</b>
 
-              <Sorting />
+              <Sorting currentSortingType={sortName} />
 
-              <CardsList offers={filteredOffers} />
+              <CardsList
+                offers={getSortedType(filteredOffers, sortName)}
+                onMouseEnter={setActiveOffer}
+              />
             </section>
 
             <div className="cities__right-section">
@@ -44,6 +51,7 @@ function Main(): JSX.Element {
                 className="cities__map"
                 city={filteredOffers[0].city}
                 points={filteredOffers}
+                selectedPoint={activeOffer}
               />
             </div>
           </div>
