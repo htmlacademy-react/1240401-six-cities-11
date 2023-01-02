@@ -1,23 +1,21 @@
-import { useState } from 'react';
 import { Offer } from '../../types/offers';
 import Card from '../card/card';
 
 
 type CardsListProps = {
   offers: Offer[];
+  onMouseEnter?: (activeCard: number | null) => void;
 }
 
-export function CardsList({offers}: CardsListProps):JSX.Element {
-  const [, setActiveCard] = useState<number | null>(null);
-
+export function CardsList({offers, onMouseEnter}: CardsListProps):JSX.Element {
   return (
     <div className="cities__places-list">
       {offers.map((offer) => (
         <Card
           key={offer.id}
           offer={offer}
-          onMouseOver={() => setActiveCard(offer.id)}
-          onMouseLeave={() => setActiveCard(null)}
+          onMouseEnter={() => onMouseEnter && onMouseEnter(offer.id)}
+          onMouseLeave={() => onMouseEnter && onMouseEnter(null)}
           cardType={'city'}
         />
       ))}
