@@ -3,21 +3,20 @@ import { SortingTypes } from '../../const';
 import { useAppDispatch } from '../../hooks';
 import { changeSortName } from '../../store/action';
 import cn from 'classnames';
+import { SortingKeys } from '../../types/offers';
 
 type SortingProps = {
-  currentSortingType: string;
+  currentSortName: SortingKeys;
 }
 
-type SortingKeys = keyof typeof SortingTypes;
-
-function Sorting({ currentSortingType }: SortingProps): JSX.Element {
+function Sorting({ currentSortName }: SortingProps): JSX.Element {
   const dispatch = useAppDispatch();
-  const [isSortActive, setSortActive] = useState<boolean>(false);
 
-  const onSortingClick = () => setSortActive(!isSortActive);
+  const [isSortOpen, setSortOpen] = useState<boolean>(false);
 
-  const handleSortChange = (sortName: string) => {
+  const handleSortChange = (sortName: SortingKeys) => {
     dispatch(changeSortName(sortName));
+    setSortOpen(false);
   };
 
   const sortingKeys = Object.keys(SortingTypes) as SortingKeys[];
@@ -28,17 +27,17 @@ function Sorting({ currentSortingType }: SortingProps): JSX.Element {
       action="#"
       method="get"
     >
-      <span className="places__sorting-caption">Sort by</span>
-      <span className="places__sorting-type" tabIndex={0} onClick={onSortingClick}>
-        {currentSortingType}
+      <span className="places__sorting-caption">Sort by{' '}</span>
+      <span className="places__sorting-type" tabIndex={0} onClick={() => setSortOpen(!isSortOpen)}>
+        {SortingTypes[currentSortName]}
         <svg className="places__sorting-arrow" width="7" height="4">
           <use xlinkHref="#icon-arrow-select"></use>
         </svg>
       </span>
-      <ul className={cn('places__options places__options--custom', isSortActive && 'places__options--opened')}>
+      <ul className={cn('places__options places__options--custom', isSortOpen && 'places__options--opened')}>
         {sortingKeys.map((sorting) => {
           const className = cn('places__option', {
-            'places__option--active': currentSortingType === sorting
+            'places__option--active': currentSortName === sorting
           });
           return (
             <li

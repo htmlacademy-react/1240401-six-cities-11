@@ -26,7 +26,3 @@ export const SortingTypes = {
   highToLow: 'Price: high to low',
   topRated: 'Top rated first'
 } as const;
-
-// '../../markup/img/pin.svg';
-
-// '../../markup/img/pin-active.svg';

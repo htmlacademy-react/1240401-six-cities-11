@@ -7,9 +7,11 @@ export const sortingRules = {
   topRated: (a: Offer, b: Offer) => b.rating - a.rating,
 };
 
-export const getSortedType = (offers: Offer[], activeSorting: string) => {
+export const getSortedOffers = (offers: Offer[], activeSorting: string) => {
   const sortedOffers = offers.slice();
+  const sortFn = sortingRules[activeSorting as keyof typeof sortingRules];
+  if(!sortFn) {
+    return sortedOffers;
+  }
   return sortedOffers.sort(sortingRules[activeSorting as keyof typeof sortingRules]);
 };
-
-

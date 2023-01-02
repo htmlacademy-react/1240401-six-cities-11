@@ -1,21 +1,20 @@
 import { createReducer } from '@reduxjs/toolkit';
-// import { store } from '.';
 import { CITIES, SortingTypes } from '../const';
 import { offers } from '../mocks/offers';
-import { Offer } from '../types/offers';
+import { Offer, SortingKeys } from '../types/offers';
 import { changeCity, changeSortName } from './action';
 
 
 type InitialState = {
   city: string;
   offers: Offer[];
-  sortName: string;
+  sortName: SortingKeys;
 }
 
 const initialState: InitialState = {
   city: CITIES[0],
   offers: offers,
-  sortName: SortingTypes.popular
+  sortName: Object.keys(SortingTypes)[0]
 };
 
 const reducer = createReducer(initialState, (builder) => {

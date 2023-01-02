@@ -1,3 +1,5 @@
+import { SortingTypes } from '../const';
+
 type Location = {
   latitude: number;
   longitude: number;
@@ -34,3 +36,5 @@ export type Offer = {
   title: string;
   type: string;
 };
+
+export type SortingKeys = keyof typeof SortingTypes;
